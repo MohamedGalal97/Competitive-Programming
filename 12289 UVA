@@ -36,7 +36,7 @@ int main()
 	cin >> t;
 	while (t--) {
 		cin >> s;
-		if (sz(s) > 3)
+		if (sz(s) == 5)
 			puts("3");
 		else {
 			int cnt = 0;
@@ -46,7 +46,7 @@ int main()
 				cnt++;
 			if (s[2] == 'e')
 				cnt++;
-			puts(t >= 2 ? "1" : "2");
+			puts(cnt >= 2 ? "1" : "2");
 		}
 	}
 #if _DEBUG

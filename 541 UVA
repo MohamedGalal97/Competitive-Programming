@@ -1,0 +1,76 @@
+/* Mohamed Galal */
+#define _CRT_SECURE_NO_WARNINGS
+#include<bits/stdc++.h>
+#define PI 3.14159265359
+#define mod = 1e9 + 7 
+#define oo = 1e17
+#define m_p make_pair
+#define p_b push_back
+#define ss second
+#define ff first
+#define rep(i,size) for(int i = 0 ; i < size ; i++)
+#define sz(v) (int)v.size()
+#define sz(s) (int)s.size()
+#define sz(t) (int)t.size()
+#define all(v)  ((v).begin()), ((v).end())
+#define all(s)  ((s).begin()), ((s).end())
+#define all(t)  ((t).begin()), ((t).end())
+typedef long long ll;
+typedef long double ld;
+typedef unsigned long long ull;
+using namespace std;
+void Mohamed_Galal() {
+#ifndef ONLINE_JUDGE
+	/*freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);*/
+#endif
+	ios_base::sync_with_stdio(0);
+	cin.tie(NULL), cout.tie(NULL);
+
+}
+//const int N = 101;
+//int arr[N][N], Sum_Row[N] = { 0 }, Sum_Column[N] = { 0 };
+int main()
+{
+	Mohamed_Galal();
+	int n;
+	while (cin >> n){
+		int arr[101][101], Sum_Row[101] = { 0 }, Sum_Column[101] = { 0 };
+		int cnt1 = 0, cnt2 = 0, res1 = 0, res2 = 0;
+		if (n == 0)break;
+		for (size_t i = 0; i < n; i++)
+		for (size_t j = 0; j < n; j++)
+			cin >> arr[i][j];
+		for (size_t i = 0; i < n; i++)
+		for (size_t j = 0; j < n; j++)
+			Sum_Row[i] += arr[i][j];
+		for (size_t i = 0; i < n; i++)
+		for (size_t j = 0; j < n; j++)
+			Sum_Column[i] += arr[j][i];
+		for (size_t i = 0; i < n; i++){
+			if (Sum_Row[i] % 2){
+				cnt1++;
+				res1 = i;
+			}
+		}
+		for (size_t i = 0; i < n; i++){
+			if (Sum_Column[i] % 2){
+				cnt2++;
+				res2 = i;
+			}
+		}
+		if (cnt1 == cnt2&&cnt1 == 1){
+			res1++, res2++;
+			cout << "Change bit (" << res1 << ',' << res2 << ")" << endl;
+		}
+		else if (cnt1 == cnt2&&cnt1 == 0)
+			cout << "OK" << endl;
+		else
+			cout << "Corrupt" << endl;
+	}
+#if _DEBUG
+	system("pause");
+#endif
+	return 0;
+}
+/* Mohamed Galal */

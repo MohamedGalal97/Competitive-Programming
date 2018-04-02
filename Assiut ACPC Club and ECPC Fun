@@ -1,0 +1,65 @@
+/* Mohamed Galal */
+#define _CRT_SECURE_NO_WARNINGS
+#include<bits/stdc++.h>
+#define PI 3.14159265359
+#define mod = 1e9 + 7 
+#define oo = 1e17
+#define m_p make_pair
+#define p_b push_back
+#define ss second
+#define ff first
+#define rep(i,size) for(int i = 0 ; i < size ; i++)
+#define sz(v) (int)v.size()
+#define sz(s) (int)s.size()
+#define sz(t) (int)t.size()
+#define all(v)  ((v).begin()), ((v).end())
+#define all(s)  ((s).begin()), ((s).end())
+#define all(t)  ((t).begin()), ((t).end())
+typedef long long ll;
+typedef long double ld;
+typedef unsigned long long ull;
+using namespace std;
+void Mohamed_Galal() {
+#ifndef ONLINE_JUDGE
+	/*freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);*/
+#endif
+	ios_base::sync_with_stdio(0);
+	cin.tie(NULL), cout.tie(NULL);
+
+}
+//const int N = 1e5;
+//int arr[N], cum[N];
+int main()
+{
+	Mohamed_Galal();
+	int n, cnt = 0;
+	cin >> n;
+	vector<pair<int, int>>v(n + 1);
+	for (size_t i = 0; i < n; i++)
+		cin >> v[i].ff;
+	int q, x, y;
+	cin >> q;
+	while (q--){
+		cin >> x >> y;
+		x--;
+		v[x].ss++, v[y].ss--;
+	}
+	if (v[0].ss == 0)cnt++;
+	for (int i = 1; i < n; i++){
+		v[i].ss += v[i - 1].ss;
+		if (v[i].ss == 0)
+			cnt++;
+	}
+	cout << cnt << endl;
+	for (size_t i = 0; i < n; i++){
+		if (!v[i].ss)
+			cout << v[i].ff << " ";
+	}
+	cout << endl;
+    #if _DEBUG
+	system("pause");
+    #endif
+	return 0;
+}
+/* Mohamed Galal */

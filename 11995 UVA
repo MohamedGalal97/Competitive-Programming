@@ -1,0 +1,70 @@
+/* Mohamed Galal */
+#define _CRT_SECURE_NO_WARNINGS
+#include<bits/stdc++.h>
+#define PI 3.14159265359
+#define mod = 1e9 + 7 
+#define oo = 1e17
+#define m_p make_pair
+#define p_b push_back
+#define ss second
+#define ff first
+#define rep(i,size) for(int i = 0 ; i < size ; i++)
+#define sz(v) (int)v.size()
+#define sz(s) (int)s.size()
+#define sz(t) (int)t.size()
+#define all(v)  ((v).begin()), ((v).end())
+#define all(s)  ((s).begin()), ((s).end())
+#define all(t)  ((t).begin()), ((t).end())
+typedef long long ll;
+typedef long double ld;
+typedef unsigned long long ull;
+using namespace std;
+void Mohamed_Galal() {
+#ifndef ONLINE_JUDGE
+	/*freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);*/
+#endif
+	ios_base::sync_with_stdio(0);
+	cin.tie(NULL), cout.tie(NULL);
+
+}
+int main()
+{
+	Mohamed_Galal();
+	int n;
+	while (cin >> n){
+		int x, y, res = 0, cnt1 = 0, cnt2 = 0, cnt3 = 0;
+		queue<int> q;
+		priority_queue<int> pq;
+		stack<int> st;
+		for (size_t i = 0; i < n; i++){
+			cin >> x >> y;
+			if (x == 1)
+				q.push(y),pq.push(y),st.push(y);
+			else{
+				res++;
+				if (!q.empty() && y == q.front())
+					q.pop(), cnt1++;
+				if (!pq.empty() && y == pq.top())
+					pq.pop(), cnt3++;
+				if (!st.empty() && y == st.top())
+					st.pop(), cnt2++;
+			}
+		}
+		if ((cnt1 == res && cnt2 == res) || (cnt1 == res && cnt3 == res) || (cnt3 == res  && cnt2 == res) || (cnt3 == res && cnt2 == res && cnt1 == res))
+			cout << "not sure" << endl;
+		else if (cnt2 == res)
+			cout << "stack" << endl;
+		else if (cnt3 == res)
+			cout << "priority queue" << endl;
+		else if (cnt1 == res)
+			cout << "queue" << endl;
+		else
+			cout << "impossible" << endl;
+	}
+    #if _DEBUG
+	system("pause");
+    #endif
+	return 0;
+}
+/* Mohamed Galal */

@@ -1,0 +1,66 @@
+/* Mohamed Galal */
+#define _CRT_SECURE_NO_WARNINGS
+#include<bits/stdc++.h>
+#define PI 3.14159265359
+#define mod = 1e9 + 7 
+#define oo = 1e17
+#define m_p make_pair
+#define p_b push_back
+#define ss second
+#define ff first
+#define rep(i,size) for(int i = 0 ; i < size ; i++)
+#define sz(v) (int)v.size()
+#define sz(s) (int)s.size()
+#define sz(t) (int)t.size()
+#define all(v)  ((v).begin()), ((v).end())
+#define all(s)  ((s).begin()), ((s).end())
+#define all(t)  ((t).begin()), ((t).end())
+typedef long long ll;
+typedef long double ld;
+typedef unsigned long long ull;
+using namespace std;
+void Mohamed_Galal() {
+#ifndef ONLINE_JUDGE
+	/*freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);*/
+#endif
+	ios_base::sync_with_stdio(0);
+	cin.tie(NULL), cout.tie(NULL);
+
+}
+const int N = 1e4 + 5;
+int arr[N];
+double n, k, percent;
+bool valid(double Mid){
+	double res = 0;
+	for (size_t i = 0; i < n; i++)
+		arr[i] > Mid ? res += (arr[i] - Mid) * percent : res -= (Mid - arr[i]);
+	return res > 0;
+}
+double BinarySearch(double First, double End){
+	double ans = 0;
+	while (End - First > 1e-8) {
+		double Mid = (First + End) / 2;
+		if (valid(Mid)){
+			ans = Mid;
+			First = Mid ;
+		}
+		else
+			End = Mid ;
+	}
+	return ans;
+}
+int main()
+{
+	Mohamed_Galal(); 
+	cin >> n >> k;
+	percent = 1 - (k / 100);
+	for (size_t i = 0; i < n; i++)
+		cin >> arr[i];
+	cout << fixed << setprecision(6) << BinarySearch(0, 1000) << endl;
+    #if _DEBUG
+	system("pause");
+    #endif
+	return 0;
+}
+/* Mohamed Galal */
